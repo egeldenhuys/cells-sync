@@ -1,0 +1,16 @@
+x-podman:
+  in_pod: false
+
+services:
+  pydio-cells-sync-dev:
+    # image: mcr.microsoft.com/devcontainers/go:1-1.23-bookworm
+    build:
+      dockerfile: Dockerfile
+    container_name: pydio-cells-sync-dev
+    userns_mode: keep-id
+    volumes:
+      - ../:/workspaces/evert-cells-sync:z
+      # - /home/evert/go/pkg/mod:/go/pkg/mod:z
+
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
