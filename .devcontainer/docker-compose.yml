@@ -2,15 +2,15 @@ x-podman:
   in_pod: false
 
 services:
-  pydio-cells-sync-dev:
+  cells-sync:
     # image: mcr.microsoft.com/devcontainers/go:1-1.23-bookworm
     build:
       dockerfile: Dockerfile
     container_name: pydio-cells-sync-dev
     userns_mode: keep-id
     volumes:
-      - ../:/workspaces/evert-cells-sync:z
-      # - /home/evert/go/pkg/mod:/go/pkg/mod:z
+      - ../:/workspaces/dummy-mount-to-set-selinux-label:z # Required to set the correct selinux label on source dir
+      - /home/evert/go/pkg/mod:/go/pkg/mod:z # Go cache
 
     command: /bin/sh -c "while sleep 1000; do :; done"
 
