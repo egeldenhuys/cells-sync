@@ -9,8 +9,8 @@ services:
     container_name: pydio-cells-sync-dev
     userns_mode: keep-id
     volumes:
-      - ../:/workspaces/dummy-mount-to-set-selinux-label:z # Required to set the correct selinux label on source dir
-      - /home/evert/go/pkg/mod:/go/pkg/mod:z # Go cache
+      # - ../:/workspaces/dummy-mount-to-set-selinux-label:z # Use only for Goland. Required to set the correct selinux label on source dir. Only required for Goland
+      - ../:/workspaces/cells-sync:z # Use only for vscode.
 
     command: /bin/sh -c "while sleep 1000; do :; done"
 

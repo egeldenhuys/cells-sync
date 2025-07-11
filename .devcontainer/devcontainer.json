@@ -6,7 +6,7 @@
 	// "image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "cells-sync",
-	"workspaceFolder": "/workspaces/cells-sync",
+	"workspaceFolder": "/workspaces/cells-sync",  // vscode does not automatically mount this directory, Jetbrains does.
 	"shutdownAction": "stopCompose"
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
