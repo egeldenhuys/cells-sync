@@ -47,23 +47,12 @@ In order to compile and run the Cells-Sync client, you must fulfill the followin
 
 ### Compilation instructions
 
-- Get the code: `go get github.com/pydio/cells-sync/...`
+- Get the code: `git clone github.com/pydio/cells-sync`
 - Change directory to `app/ux/`
-- To load frontend dependencies run `npm install`
 - To compile the frontend, run `npm run build`
 - To pack the frontend inside the binary (not mandatory if you are running on the same machine where $GOPATH is available), install github.com/gobuffalo/packr/packr tool and run `make clean pack` at the root of the repository.
-
-[ Update 04/16/2020 ]  
-Due to a dependency issue, until we switch to modules or until this dependency master is stable again, you have to apply the following before calling the make command:
-
-```sh
-cd github.com/zserge/webview
-git checkout 9c1b0a888aa40039d501c1ea9f60b22a076a25ea
-```
-
-[ to be continued ]
-
-- Compile binary by running `make cli`
+- Compile binary by running `make pure`
+- Compile binary with frontend using `make dev`
 
 The resulting `cells-sync` binary should be good to go.
 
