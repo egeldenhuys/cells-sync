@@ -1,9 +1,17 @@
 x-podman:
   in_pod: false
 
+volumes:
+  pydio-cells-go-cache:
+
+networks:
+  pydio-dev-net:
+    external: true
+
 services:
   cells-sync:
     # image: mcr.microsoft.com/devcontainers/go:1-1.23-bookworm
+    image: docker.io/cells-sync-img
     build:
       dockerfile: Dockerfile
     container_name: pydio-cells-sync-dev
@@ -11,6 +19,10 @@ services:
     volumes:
       # - ../:/workspaces/dummy-mount-to-set-selinux-label:z # Use only for Goland. Required to set the correct selinux label on source dir. Only required for Goland
       - ../:/workspaces/cells-sync:z # Use only for vscode.
+      - pydio-cells-go-cache:/go:z # For go cache
+    networks:
+      - pydio-dev-net
+#    network_mode: host
 
     command: /bin/sh -c "while sleep 1000; do :; done"
 
